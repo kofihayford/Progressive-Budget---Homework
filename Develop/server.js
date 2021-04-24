@@ -1,7 +1,9 @@
 const express = require("express");
+require('dotenv').config();
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
+
 
 const PORT = 3000;
 
@@ -15,8 +17,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+mongoose.connect(`mongodb+srv://kofihayford:${process.env.DATABASE_KEY}@cluster0.uohwv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false
 });
 
