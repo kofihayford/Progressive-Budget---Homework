@@ -10,13 +10,15 @@ const PORT = 3000;
 const app = express();
 
 // uncomment before production
-app.get('*', function (req, res) {
-  res.redirect('https://' + req.headers.host + req.url);
+app.enable('trust proxy')
+app.use(function (request, response, next) {
 
-  // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-  // res.redirect('https://example.com' + req.url);
+  if (process.env.NODE_ENV != 'development' && !request.secure) {
+    return response.redirect("https://" + request.headers.host + request.url);
+  }
+
+  next();
 })
-
 app.use(logger("dev"));
 
 app.use(compression());
