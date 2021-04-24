@@ -10,12 +10,12 @@ const PORT = 3000;
 const app = express();
 
 // uncomment before production
-// app.get('*', function (req, res) {
-//   res.redirect('https://' + req.headers.host + req.url);
+app.get('*', function (req, res) {
+  res.redirect('https://' + req.headers.host + req.url);
 
-//   // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-//   // res.redirect('https://example.com' + req.url);
-// })
+  // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+  // res.redirect('https://example.com' + req.url);
+})
 
 app.use(logger("dev"));
 
