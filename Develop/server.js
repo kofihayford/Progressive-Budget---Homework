@@ -9,6 +9,14 @@ const PORT = 3000;
 
 const app = express();
 
+// uncomment before production
+// app.get('*', function (req, res) {
+//   res.redirect('https://' + req.headers.host + req.url);
+
+//   // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+//   // res.redirect('https://example.com' + req.url);
+// })
+
 app.use(logger("dev"));
 
 app.use(compression());
@@ -27,12 +35,6 @@ mongoose.connect(`mongodb+srv://kofihayford:${process.env.DATABASE_KEY}@cluster0
 // routes
 app.use(require("./routes/api.js"));
 
-app.get('*', function (req, res) {
-  res.redirect('https://' + req.headers.host + req.url);
-
-  // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-  // res.redirect('https://example.com' + req.url);
-})
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
