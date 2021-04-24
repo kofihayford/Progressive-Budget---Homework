@@ -1,6 +1,7 @@
 {
     "short_name": "Budget",
     "name": "Budget Tracker",
+    "description": "Progressive Web App For Budget",
     "icons": [
         {
             "src": "icons/icon-192x192.png",
@@ -14,5 +15,7 @@
         }
     ],
     "start_url": "/",
-    "display": "standalone"
+    "display": "standalone",
+    "theme_color": "#764ABC",
+    "background_color": "#764ABC"
 }
