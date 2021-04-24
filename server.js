@@ -35,6 +35,6 @@ mongoose.connect(`mongodb+srv://kofihayford:${process.env.DATABASE_KEY}@cluster0
 // routes
 app.use(require("./routes/api.js"));
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
